@@ -7,6 +7,8 @@ obj.style.position = 'fixed'
 obj.style.left = left + 'px'
 obj.style.bottom = bottom + 'px'
 document.body.append(obj)
+// returns lost items and places them back where they came from
+return obj
 }
 
 //let obj = document.createElement('img')
@@ -34,12 +36,13 @@ newImage('assets/well.png', 500, 425)
 
 //copied code from above to get same outcome 
 function newItem(imageURL, left, bottom){
-let obj = newImage(imageURL, left, bottom)
-obj.addEventListener('dbclick', function(){
-    obj.remove()
-})
-}
-
+    let obj = newImage(imageURL, left, bottom)
+    // changed it so players have to double click for item
+    obj.addEventListener('dblclick', function(){
+        obj.remove()
+        })
+    }
+    
 //added my new items with new function
 newItem('assets/sword.png', 500, 405)
 newItem('assets/shield.png', 165, 185)
